@@ -45,4 +45,4 @@ async def on_ready():
     bot.add_view(CloseView())
     print(f"شغال: {bot.user}")
 
-bot.run(os.getenv("MTU1NDExODI5NTkwNzcyOTUxOQ.GB8gP_.bcJsXZJAgcpWQ_D1-3JN4f0d54PXizyy82pnVc"))
+bot.run(os.getenv("DISCORD_TOKEN"))
