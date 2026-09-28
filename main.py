@@ -1,8 +1,8 @@
 import discord
+import os
 from discord.ext import commands
 from discord import app_commands
-
-TOKEN = "PUT_YOUR_NEW_TOKEN_HERE"
+TOKEN = os.getenv("DISCORD_TOKEN")
 TICKET_CATEGORY_ID = 1550873035744088064  # حط ايدي الكاتقوري هنا
 SUPPORT_ROLE_ID = 1234567890      # حط ايدي رتبة الدعم هنا
 
