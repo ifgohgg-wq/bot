@@ -4,7 +4,7 @@ from discord import app_commands
 import os
 import json
 
-OWNER_ID = 1522144542927622149 # <-- حط الايدي حقك هنا
+interaction.user.id = 1522144542927622149 # <-- حط الايدي حقك هنا
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -79,7 +79,7 @@ async def mirror(interaction: discord.Interaction, روم: discord.TextChannel, 
     app_commands.Choice(name="يبدأ بالكلمة", value="starts"),
 ])
 async def autoreply(interaction: discord.Interaction, الكلمة: str, الرد: str, النوع: app_commands.Choice[str]):
-    if interaction.user.id!= OWNER_ID:1522144542927622149
+    if interaction.user.id!= interaction.user.id:1522144542927622149
         await interaction.response.send_message("مو مسموح لك", ephemeral=True); return
     data = load_data()
     data["auto_reply"].append({"trigger": الكلمة, "response": الرد, "mode": النوع.value})
