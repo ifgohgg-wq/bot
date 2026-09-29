@@ -16,26 +16,19 @@ class TicketView(discord.ui.View):
         super().__init__(timeout=None)
     @discord.ui.button(label="فتح تذكرة", style=discord.ButtonStyle.green, emoji="🎫", custom_id="open_ticket")
     async def open_ticket(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer(ephemeral=True)
         guild = interaction.guild
         category = guild.get_channel(TICKET_CATEGORY_ID)
+        support_role = guild.get_role(SUPPORT_ROLE_ID)
         overwrites = {
             guild.default_role: discord.PermissionOverwrite(read_messages=False),
             interaction.user: discord.PermissionOverwrite(read_messages=True, send_messages=True),
-            guild.get_role(SUPPORT_ROLE_ID): discord.PermissionOverwrite(read_messages=True, send_messages=True)
         }
+        if support_role:
+            overwrites[support_role] = discord.PermissionOverwrite(read_messages=True, send_messages=True)
         channel = await guild.create_text_channel(f"ticket-{interaction.user.name}", category=category, overwrites=overwrites)
         await channel.send(f"{interaction.user.mention} تم فتح تذكرتك!", view=CloseView())
-        await interaction.response.send_message(f"تم فتح تذكرتك: {channel.mention}", ephemeral=True)
-
-class CloseView(discord.ui.View):
-    def __init__(self):
-        super().__init__(timeout=None)
-    @discord.ui.button(label="إغلاق التذكرة", style=discord.ButtonStyle.red, emoji="🔒", custom_id="close_ticket")
-    async def close(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.channel.delete()
-
-@bot.command()
-async def setup(ctx):
+        await interaction.followup.send(f"تم فتح تذكرتك: {channel.mention}", ephemeral=True)
     embed = discord.Embed(title="الدعم الفني", description="اضغط الزر لفتح تذكرة", color=discord.Color.blue())
     await ctx.send(embed=embed, view=TicketView())
 
