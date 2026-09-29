@@ -36,7 +36,11 @@ class TicketView(discord.ui.View):
             }
             if support_role:
                 overwrites[support_role] = discord.PermissionOverwrite(read_messages=True, send_messages=True)
-            cat = category if isinstance)
+            channel = await guild.create_text_channel(
+    name=f"ticket-{interaction.user.name}".lower().replace(" ", "-")[:90],
+    overwrites=overwrites,
+    reason="Ticket opened"
+            )
 
 @bot.event
 async def on_ready():
