@@ -4,7 +4,7 @@ from discord.ext import commands
 from discord import app_commands
 TOKEN = os.getenv("DISCORD_TOKEN")
 TICKET_CATEGORY_ID = 1550873035744088064  # حط ايدي الكاتقوري هنا
-SUPPORT_ROLE_ID = 1234567890      # حط ايدي رتبة الدعم هنا
+SUPPORT_ROLE_ID = 1554440757996421170      # حط ايدي رتبة الدعم هنا
 
 intents = discord.Intents.default()
 intents.message_content = True
