@@ -4,7 +4,7 @@ from discord import app_commands
 import os
 import json
 
-interaction.user.id = 1522144542927622149 # <-- حط الايدي حقك هنا
+if interaction.user.id!= OWNER_ID:1522144542927622149 = 1522144542927622149 # <-- حط الايدي حقك هنا
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -63,7 +63,7 @@ async def on_message(message):
 @bot.tree.command(name="تحديد-روم", description="خلي البوت يرد برساله ثابته في روم معين")
 @app_commands.describe(روم="اختر الروم", رسالة="الرسالة اللي يرد فيها")
 async def mirror(interaction: discord.Interaction, روم: discord.TextChannel, رسالة: str):
-    if interaction.user.id!= OWNER_ID:
+    if if interaction.user.id!= OWNER_ID:1522144542927622149= OWNER_ID:
         await interaction.response.send_message("مو مسموح لك", ephemeral=True); return
     data = load_data()
     data["mirror_rooms"][str(روم.id)] = رسالة
