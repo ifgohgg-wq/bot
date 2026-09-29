@@ -4,7 +4,7 @@ import os
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 TICKET_CATEGORY_ID = 1550873004710428742
-SUPPORT_ROLE_ID = 1550763233162838166
+SUPPORT_ROLE_ID = 1554440757996421170
 
 intents = discord.Intents.default()
 intents.guilds = True
