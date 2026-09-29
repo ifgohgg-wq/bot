@@ -17,7 +17,7 @@ class TicketView(discord.ui.View):
 
     @discord.ui.button(label="فتح تذكرة", style=discord.ButtonStyle.green, custom_id="open_ticket", emoji="🎫")
     async def open_ticket(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.defer(ephemeral=True)
+        await interaction.response.send_message("جاري فتح تذكرتك...", ephemeral=True)
         guild = interaction.guild
         category = guild.get_channel(TICKET_CATEGORY_ID)
         support_role = guild.get_role(SUPPORT_ROLE_ID)
